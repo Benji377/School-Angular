@@ -1,0 +1,36 @@
+<div class="pizza-form">
+  <label>Name:</label>
+  <input type="text"><br>
+  <label>Beschreibung:</label>
+  <input type="text"><br>
+  <label>Preis:</label>
+  <input type="number">
+  <span>
+    <button>Annehmen</button>
+    <button>Alle löschen</button>
+  </span>
+  <br>
+</div>
+<hr>
+<table width="100%" border="1px solid black" *ngIf="pizzas.length; else nopizza">
+    <tr>
+      <th>Name</th>
+      <th>Beschreibung</th>
+      <th>Preis</th>
+      <th>Ist verfallen</th>
+      <th>Anzahl Zutaten</th>
+    </tr>
+      <tr *ngFor="let pizza of pizzas">
+        <td>{{pizza.name}}</td>
+        <td>{{pizza.description}}</td>
+        <td>{{pizza.price}}</td>
+        <td>{{pizza.isExpired()}}</td>
+        <td>{{pizza.ingredients?.length}}</td>
+    </tr>
+</table>
+
+<ng-template #nopizza>
+  <div>
+    Keine Pizzas vorhanden
+  </div>
+</ng-template>
