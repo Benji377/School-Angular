@@ -30,7 +30,17 @@ export class PizzaListComponentComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  addPizza(name:string, desc:string, price:string): void {
+      let fprice = parseFloat(price);
+      let date = new Date();
+      let pizzzaaa: Pizza = new Pizza(name, desc, date, fprice, []);
+      this.pizzas.push(pizzzaaa);
+  }
+
+  clearAll() {
+    this.pizzas = [];
   }
 
 }

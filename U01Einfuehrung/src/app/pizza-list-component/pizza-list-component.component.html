@@ -1,18 +1,18 @@
 <div class="pizza-form">
   <label>Name:</label>
-  <input type="text"><br>
+  <input #nameInput type="text"><br>
   <label>Beschreibung:</label>
-  <input type="text"><br>
+  <input #descInput type="text"><br>
   <label>Preis:</label>
-  <input type="number">
+  <input #priceInput type="number" step="0.01" value="0">
   <span>
-    <button>Annehmen</button>
-    <button>Alle löschen</button>
+    <button (click) = "addPizza(nameInput.value, descInput.value, priceInput.value); nameInput.value = ''; descInput.value = ''; priceInput.value = '0'" >Annehmen</button>
+    <button (click) = "clearAll()" >Alle löschen</button>
   </span>
   <br>
 </div>
 <hr>
-<table width="100%" border="1px solid black" *ngIf="pizzas.length; else nopizza">
+<table *ngIf="pizzas.length; else nopizza">
     <tr>
       <th>Name</th>
       <th>Beschreibung</th>
