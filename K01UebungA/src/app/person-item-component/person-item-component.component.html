@@ -1,0 +1,18 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image">
+      <img mat-card-image src="{{person.imagelink}}" alt="Photo of {{person.name}}">
+    </div>
+    <mat-card-title>{{person.name}}</mat-card-title>
+    <mat-card-subtitle>{{person.address}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{person.imagelink}}" alt="Photo of {{person.name}}">
+  <mat-card-content>
+    <p>
+      Geboren am {{person.birthdate}}, derzeit im {{person.ageInYears}}, hat eine Größe von {{person.height}} Metern,
+      <span *ngIf="person.height > 1.8">ist also groß,</span>
+      ist <span *ngIf="person.male; else weiblich">ein Mann</span><ng-template #weiblich>eine Frau</ng-template>
+    </p>
+  </mat-card-content>
+</mat-card>
+

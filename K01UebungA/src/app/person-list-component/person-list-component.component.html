@@ -1,0 +1,9 @@
+<div *ngIf="persons.length; else empty">
+
+</div>
+
+<ng-template #empty>
+  <div>
+    Keine Personen festgelegt
+  </div>
+</ng-template>
