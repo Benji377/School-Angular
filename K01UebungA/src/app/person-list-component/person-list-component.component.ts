@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from 'src/shared/person';
 import { Car } from 'src/shared/person';
 import { Address } from 'src/shared/person';
-import { PersonItemComponentComponent } from '../person-item-component/person-item-component.component';
 
 @Component({
   selector: 'ua-person-list-component',

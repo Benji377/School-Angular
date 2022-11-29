@@ -1,5 +1,7 @@
 <div *ngIf="persons.length; else empty">
-
+  <div fxLayoutGap="10px" fxLayout.gt-md="column" *ngFor="let person of persons">
+    <ua-person-item-component  [person]="person"></ua-person-item-component>
+  </div>
 </div>
 
 <ng-template #empty>

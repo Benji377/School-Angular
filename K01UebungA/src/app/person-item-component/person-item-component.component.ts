@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Person } from 'src/shared/person';
 
 @Component({
@@ -7,13 +7,9 @@ import { Person } from 'src/shared/person';
   styleUrls: ['./person-item-component.component.scss']
 })
 export class PersonItemComponentComponent implements OnInit {
-  person:Person;
+  @Input() person!:Person;
 
-  constructor(
-    p:Person
-  ) {
-    this.person = p;
-  }
+  constructor() {}
 
   ngOnInit(): void {
   }
