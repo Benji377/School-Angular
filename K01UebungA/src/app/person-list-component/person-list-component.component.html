@@ -1,5 +1,5 @@
 <div *ngIf="persons.length; else empty">
-  <div fxLayout.gt-md="column" *ngFor="let person of persons">
+  <div *ngFor="let person of persons">
     <ua-person-item-component  [person]="person"></ua-person-item-component>
   </div>
 </div>

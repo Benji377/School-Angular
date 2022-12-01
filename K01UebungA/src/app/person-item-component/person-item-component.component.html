@@ -13,7 +13,10 @@
           <span *ngIf="person.height > 1.8">ist also groß,</span>
           ist <span *ngIf="person.male; else weiblich">ein Mann</span><ng-template #weiblich>eine Frau</ng-template>
         </p>
-        <ua-email-list-component [emails]="person.emailaddresses"></ua-email-list-component>
+        <div fxLayout.gt-md="row" fxLayout.lt-md="column">
+          <ua-email-list-component [emails]="person.emailaddresses"></ua-email-list-component>
+          <ua-car-list-component [person]="person"></ua-car-list-component>
+        </div>
       </div>
     </div>
   </mat-card-content>
