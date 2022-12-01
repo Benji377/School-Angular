@@ -1,0 +1,15 @@
+<div [style.padding.px]="10">
+  <h3>E-Mail Adressen</h3>
+  <mat-list *ngIf="emails.length; else empty">
+    <mat-list-item *ngFor="let email of emails">
+      <mat-icon matListItemIcon>mail</mat-icon>
+      <a href="mailto:{{email}}" [style.margin-left.px]="20"><div matListItemTitle>{{email}}</div></a>
+    </mat-list-item>
+  </mat-list>
+
+  <ng-template #empty>
+    <div>
+      Keine Email-Adressen festgelegt
+    </div>
+  </ng-template>
+</div>

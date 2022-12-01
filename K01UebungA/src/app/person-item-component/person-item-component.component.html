@@ -1,16 +1,20 @@
 <mat-card class="person-card">
-  <mat-card-header fxFlex>
-      <img fxFlex mat-card-avatar src="{{person.imagelink}}" alt="Photo of {{person.name}}">
-    <mat-card-title fxFlex>{{person.name}}</mat-card-title>
-    <mat-card-subtitle fxFlex>{{person.address.postcodetown}}, {{person.address.streetnumber}}</mat-card-subtitle>
+  <mat-card-header>
+      <img mat-card-avatar src="{{person.imagelink}}" alt="Photo of {{person.name}}">
+    <mat-card-title >{{person.name}}</mat-card-title>
+    <mat-card-subtitle >{{person.address.postcodetown}}, {{person.address.streetnumber}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content fxFlex>
-    <img fxFlex.gt-md="200px" mat-card-image src="{{person.imagelink}}" alt="Photo of {{person.name}}">
-    <p fxFlex>
-      Geboren am {{person.birthdate}}, derzeit im {{person.ageInYears}}, hat eine Größe von {{person.height}} Metern,
-      <span *ngIf="person.height > 1.8">ist also groß,</span>
-      ist <span *ngIf="person.male; else weiblich">ein Mann</span><ng-template #weiblich>eine Frau</ng-template>
-    </p>
+  <mat-card-content >
+    <div fxLayout.gt-md="row" fxLayout.lt-md="column">
+      <img class="image" src="{{person.imagelink}}" alt="Photo of {{person.name}}">
+      <div>
+        <p [style.margin-left.px]="10">
+          Geboren am {{person.birthdate | date: "dd.MM.yyy"}}, derzeit im {{person.ageInYears}}, hat eine Größe von {{person.height}} Metern,
+          <span *ngIf="person.height > 1.8">ist also groß,</span>
+          ist <span *ngIf="person.male; else weiblich">ein Mann</span><ng-template #weiblich>eine Frau</ng-template>
+        </p>
+        <ua-email-list-component [emails]="person.emailaddresses"></ua-email-list-component>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>
-
