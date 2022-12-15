@@ -1,4 +1,3 @@
-import { StationItemComponent } from './../station-item/station-item.component';
 import { Component, OnInit } from '@angular/core';
 import { StationValley } from 'src/shared/station-valley';
 import { WeatherService } from 'src/shared/weather-service';
