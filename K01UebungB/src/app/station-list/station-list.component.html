@@ -1,0 +1,12 @@
+<div *ngIf="stations.length; else empty">
+  <div *ngFor="let station of stations">
+    <app-station-item [station]="station"></app-station-item>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div>
+    Keine Stationen festgelegt
+  </div>
+</ng-template>
+
