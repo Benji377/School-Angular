@@ -1,0 +1,7 @@
+<div >
+  <mat-form-field>
+    <mat-label>Stationname</mat-label>
+    <input matInput #searchTerm type="string" (keyup)="emitSearchTermChange(searchTerm.value)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>

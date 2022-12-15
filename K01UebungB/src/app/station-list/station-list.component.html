@@ -1,6 +1,8 @@
+<ub-search-term (searchTerm)="onSearchTermChange($event)"></ub-search-term>
+
 <div *ngIf="stations.length; else empty">
   <div *ngFor="let station of stations">
-    <app-station-item [station]="station"></app-station-item>
+    <ub-station-item [station]="station"></ub-station-item>
   </div>
 </div>
 

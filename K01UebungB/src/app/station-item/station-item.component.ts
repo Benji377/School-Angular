@@ -10,7 +10,7 @@ interface StationTableData {
 
 
 @Component({
-  selector: 'app-station-item',
+  selector: 'ub-station-item',
   templateUrl: './station-item.component.html',
   styleUrls: ['./station-item.component.scss']
 })
