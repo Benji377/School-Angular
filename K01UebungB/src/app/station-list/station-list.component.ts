@@ -8,7 +8,8 @@ import { WeatherService } from 'src/shared/weather-service';
   styleUrls: ['./station-list.component.scss']
 })
 export class StationListComponent implements OnInit {
-  stations!: StationValley[];
+  stations: StationValley[] = [];
+  filteredStation: StationValley[] = [];
 
   constructor(private ws: WeatherService) { }
 
@@ -17,12 +18,13 @@ export class StationListComponent implements OnInit {
       this.stations = res;
       // Es wird nach Name sortiert
       this.stations.sort((s1, s2) => s1.name.localeCompare(s2.name));
+      this.filteredStation = this.stations;
     });
   }
 
   onSearchTermChange(searchTerm: string) {
     console.log(searchTerm);
-    this.stations = this.stations.filter(s => s.name.toLowerCase().startsWith(searchTerm.toLowerCase()));
+    this.filteredStation = this.stations.filter(s => s.name.toLowerCase().startsWith(searchTerm.toLowerCase()));
   }
 
 }
