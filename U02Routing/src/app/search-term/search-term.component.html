@@ -1,0 +1,5 @@
+  <mat-form-field style="width: 100%">
+    <mat-label>Stationname</mat-label>
+    <input matInput #searchTerm type="string" (keyup)="emitSearchTermChange(searchTerm.value)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
