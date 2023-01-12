@@ -41,6 +41,29 @@ export class WeatherService {
     }
   }
 
+  get(code: string): Observable<StationValley> {
+    if (this.stations != null) {
+      return new Observable(((observer: Observer<StationValley>) => {
+        // Es wird eine Kopie der originalen Stationsliste angelegt und diese Kopie dann sortiert.
+        // Eine Kopie wird deshalb erstellt, damit im Template die Liste dann aktualisiert wird.
+        // Würde dieselbe Liste - zwar sortiert - zurück geliefert, würde diese im Template nicht
+        // aktualisiert
+        const stations = this.stations.find((st: StationValley) => st.code === code);
+        if (stations != undefined)
+          observer.next(stations);
+        observer.complete();
+      }));
+    } else {
+      return this.http.get<any>(API)
+        // Webservice liefert ein Json-Objekt mit dem Namen rows zurück in dem das Array
+        // gespeichert ist
+        .pipe(
+          map(response => response.rows),
+          map(rawStations => rawStations.map((rawStation: any) => StationFactory.fromObject(rawStation))),
+          map(stations => this.stations = stations.find((st: StationValley) => st.code === code)));
+    }
+  }
+
   private sort(stations: StationValley[], sortOrder: string): StationValley[] {
     switch (sortOrder) {
       case 'name': {

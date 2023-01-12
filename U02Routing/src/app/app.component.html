@@ -1,34 +1,49 @@
 <h1><b>Wetterstationen im Tal</b></h1>
 <nav mat-tab-nav-bar backgroundColor="primary" color="accent">
-  <a mat-tab-link
-  routerLink="/home"
-  routerLinkActive #homeTab="routerLinkActive"
-  [active]="homeTab.isActive">
-  Home
+  <a
+    mat-tab-link
+    routerLink="/home"
+    routerLinkActive
+    #homeTab="routerLinkActive"
+    [active]="homeTab.isActive"
+  >
+    Home
   </a>
-  <a mat-tab-link
-  routerLink="/stations/name"
-  routerLinkActive #nameTab="routerLinkActive"
-  [active]="nameTab.isActive">
-  Namen
+  <a
+    mat-tab-link
+    routerLink="/stations/name"
+    routerLinkActive
+    #nameTab="routerLinkActive"
+    [active]="nameTab.isActive"
+  >
+    Namen
   </a>
-  <a mat-tab-link
-  routerLink="/stations/temperature"
-  routerLinkActive #temperatureTab="routerLinkActive"
-  [active]="temperatureTab.isActive">
-  Temperatur
+  <a
+    mat-tab-link
+    routerLink="/stations/temperature"
+    routerLinkActive
+    #temperatureTab="routerLinkActive"
+    [active]="temperatureTab.isActive"
+  >
+    Temperatur
   </a>
-  <a mat-tab-link
-  routerLink="/stations/precipitation"
-  routerLinkActive #precipitationTab="routerLinkActive"
-  [active]="precipitationTab.isActive">
-  Niederschlag
+  <a
+    mat-tab-link
+    routerLink="/stations/precipitation"
+    routerLinkActive
+    #precipitationTab="routerLinkActive"
+    [active]="precipitationTab.isActive"
+  >
+    Niederschlag
   </a>
-  <a mat-tab-link
-  routerLink="/stations/pressure"
-  routerLinkActive #pressureTab="routerLinkActive"
-  [active]="pressureTab.isActive">
-  Luftdruck
+  <a
+    mat-tab-link
+    routerLink="/stations/airpressure"
+    routerLinkActive
+    #pressureTab="routerLinkActive"
+    [active]="pressureTab.isActive"
+  >
+    Luftdruck
   </a>
- </nav>
- <router-outlet></router-outlet>
+</nav>
+<router-outlet></router-outlet>

@@ -10,13 +10,15 @@ import { WeatherService } from 'src/shared/weather-service';
 })
 export class StationListComponent implements OnInit {
   stations: StationValley[] = [];
+  displayedColumns: String[] = ["name", "temperature", "precipitation", "airpressure"];
+  sortOrder: String = this.route.snapshot.params.sortOrder;
+
   constructor(private route: ActivatedRoute, private ws: WeatherService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.ws.getAll(params.sortOrder).subscribe(stations=>this.stations=stations);
       });
-
   }
 
 }

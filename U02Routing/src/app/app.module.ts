@@ -1,5 +1,4 @@
 import { StationListComponent } from './station-list/station-list.component';
-import { StationItemComponent } from './station-item/station-item.component';
 import { MatIconModule} from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,7 +22,6 @@ import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
-    StationItemComponent,
     StationListComponent,
     MeasurementItemComponent,
     SearchTermComponent,
