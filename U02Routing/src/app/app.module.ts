@@ -17,6 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { StationDetailComponent } from './station-detail/station-detail.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
+import { SearchStationComponent } from './search-station/search-station.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import {MatButtonModule} from '@angular/material/button';
     MeasurementItemComponent,
     SearchTermComponent,
     HomeComponent,
-    StationDetailComponent
+    StationDetailComponent,
+    SearchStationComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatDividerModule,
     AppRoutingModule,
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatAutocompleteModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]

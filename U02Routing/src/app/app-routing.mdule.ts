@@ -7,6 +7,7 @@ import { StationListComponent } from './station-list/station-list.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
+  { path: 'stations', component: StationListComponent},
   { path: 'stations/:sortOrder', component: StationListComponent },
   { path: 'station/:sortOrder/:code', component: StationDetailComponent}
  ];

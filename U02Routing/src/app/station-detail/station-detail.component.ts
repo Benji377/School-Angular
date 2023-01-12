@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { StationValley } from 'src/shared/station-valley';
 import { WeatherService } from 'src/shared/weather-service';
@@ -19,7 +19,11 @@ export class StationDetailComponent implements OnInit {
   displayedColumns!: string[];
   dataSource!: StationTableData[];
 
-  constructor(private route: ActivatedRoute, private ws: WeatherService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private ws: WeatherService,
+    private router: Router,
+   ) { }
 
   ngOnInit() {
     const code: string = this.route.snapshot.params.code;
@@ -38,5 +42,9 @@ export class StationDetailComponent implements OnInit {
       ];
     });
   }
+
+  backToStations() {
+    this.router.navigate(['/stations']);
+    }
 
 }
