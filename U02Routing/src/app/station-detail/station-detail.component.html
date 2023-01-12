@@ -1,0 +1,14 @@
+<ub-search-term (searchTerm)="onSearchTermChange($event)"></ub-search-term>
+<mat-hint>{{filteredStation.length}} Stationen gefunden</mat-hint>
+
+<div *ngIf="filteredStation.length; else empty">
+  <div *ngFor="let station of filteredStation">
+    <ub-station-item [station]="station"></ub-station-item>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div>
+    Keine Stationen festgelegt
+  </div>
+</ng-template>

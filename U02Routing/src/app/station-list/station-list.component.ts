@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { StationValley } from 'src/shared/station-valley';
 import { WeatherService } from 'src/shared/weather-service';
 
@@ -9,22 +10,13 @@ import { WeatherService } from 'src/shared/weather-service';
 })
 export class StationListComponent implements OnInit {
   stations: StationValley[] = [];
-  filteredStation: StationValley[] = [];
-
-  constructor(private ws: WeatherService) { }
+  constructor(private route: ActivatedRoute, private ws: WeatherService) { }
 
   ngOnInit() {
-    this.ws.getAll().subscribe(res => {
-      this.stations = res;
-      // Es wird nach Name sortiert
-      this.stations.sort((s1, s2) => s1.name.localeCompare(s2.name));
-      this.filteredStation = this.stations;
-    });
-  }
+    this.route.params.subscribe(params => {
+      this.ws.getAll(params.sortOrder).subscribe(stations=>this.stations=stations);
+      });
 
-  onSearchTermChange(searchTerm: string) {
-    console.log(searchTerm);
-    this.filteredStation = this.stations.filter(s => s.name.toLowerCase().startsWith(searchTerm.toLowerCase()));
   }
 
 }

@@ -1,2 +1,34 @@
 <h1><b>Wetterstationen im Tal</b></h1>
-<ub-station-list></ub-station-list>
+<nav mat-tab-nav-bar backgroundColor="primary" color="accent">
+  <a mat-tab-link
+  routerLink="/home"
+  routerLinkActive #homeTab="routerLinkActive"
+  [active]="homeTab.isActive">
+  Home
+  </a>
+  <a mat-tab-link
+  routerLink="/stations/name"
+  routerLinkActive #nameTab="routerLinkActive"
+  [active]="nameTab.isActive">
+  Namen
+  </a>
+  <a mat-tab-link
+  routerLink="/stations/temperature"
+  routerLinkActive #temperatureTab="routerLinkActive"
+  [active]="temperatureTab.isActive">
+  Temperatur
+  </a>
+  <a mat-tab-link
+  routerLink="/stations/precipitation"
+  routerLinkActive #precipitationTab="routerLinkActive"
+  [active]="precipitationTab.isActive">
+  Niederschlag
+  </a>
+  <a mat-tab-link
+  routerLink="/stations/pressure"
+  routerLinkActive #pressureTab="routerLinkActive"
+  [active]="pressureTab.isActive">
+  Luftdruck
+  </a>
+ </nav>
+ <router-outlet></router-outlet>

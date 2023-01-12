@@ -47,4 +47,8 @@ export class Station {
     public name: string,
     public measurements: Array<Measurement>
   ) {  }
+
+  toString(): string {
+    return this.name;
+  }
 }
