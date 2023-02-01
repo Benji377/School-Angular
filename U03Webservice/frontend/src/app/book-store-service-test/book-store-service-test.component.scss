@@ -1,0 +1,68 @@
+// Recreate the Swagger UI
+table {
+  width: 100%;
+  margin: 10px;
+  border-collapse: separate;
+  // Space the table
+  border-spacing: 1em;
+}
+
+.centered {
+  text-align: center;
+}
+
+.baseButton {
+  border-radius: 3px;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 80px;
+  height: 28.8px;
+  padding: 6px 0;
+  text-align: center;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 10%);
+}
+
+.deleteButton {
+  background: #f93e3e;
+}
+
+.getButton {
+  background: #61affe;
+}
+
+.postButton {
+  background: #49cc90;
+}
+
+.putButton {
+  background: #fca130;
+}
+
+.baseOutline {
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgb(0 0 0 / 19%);
+  width: 100%;
+}
+
+.getOutline {
+  background: rgba(97,175,254,.1);
+  border-color: #61affe;
+}
+
+.deleteOutline {
+  background: rgba(249,62,62,.1);
+  border-color: #f93e3e;
+}
+
+.postOutline {
+  background: rgba(73,204,144,.1);
+  border-color: #49cc90;
+}
+
+.putOutline {
+  background: rgba(252,161,48,.1);
+  border-color: #fca130;
+}

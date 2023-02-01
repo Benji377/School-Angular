@@ -1,0 +1,105 @@
+<table>
+  <tr>
+    <td class="baseButton getButton">GET</td>
+    <td>/books</td>
+    <td></td>
+    <td></td>
+    <td class="centered"><button mat-flat-button class="baseOutline getOutline">Get all books</button></td>
+  </tr>
+  <tr>
+    <td class="baseButton deleteButton">DELETE</td>
+    <td>/books</td>
+    <td></td>
+    <td></td>
+    <td class="centered"><button mat-flat-button class="baseOutline deleteOutline">Resets store to initail state</button></td>
+  </tr>
+  <tr>
+    <td class="baseButton getButton">GET</td>
+    <td>/books/search/{{'{'}}searchTerm{{'}'}}</td>
+    <td class="centered">
+      <mat-form-field>
+        <mat-label>searchTerm</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </td>
+    <td></td>
+    <td class="centered"><button mat-flat-button class="baseOutline getOutline">Get all books matching search term</button></td>
+  </tr>
+  <tr>
+    <td class="baseButton postButton">POST</td>
+    <td>/book</td>
+    <td></td>
+    <td></td>
+    <td class="centered">
+      <button mat-flat-button class="baseOutline postOutline">Creates a new (random) book</button>
+      <button mat-flat-button disabled class="baseOutline postOutline">Creates a new (random) book with existing ISBN</button>
+    </td>
+  </tr>
+  <tr>
+    <td class="baseButton getButton">GET</td>
+    <td>/book/{{'{'}}isbn{{'}'}}</td>
+    <td class="centered">
+      <mat-form-field>
+        <mat-label>ISBN</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </td>
+    <td></td>
+    <td class="centered"><button mat-flat-button class="baseOutline getOutline">Returns a single book by ISBN</button></td>
+  </tr>
+  <tr>
+    <td class="baseButton putButton">PUT</td>
+    <td>/book/{{'{'}}isbn{{'}'}}</td>
+    <td class="centered">
+      <mat-form-field>
+        <mat-label>ISBN</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </td>
+    <td></td>
+    <td class="centered">
+      <button mat-flat-button class="baseOutline putOutline">Updates an existing book</button>
+    </td>
+  </tr>
+  <tr>
+    <td class="baseButton deleteButton">DELETE</td>
+    <td>/book/{{'{'}}isbn{{'}'}}</td>
+    <td class="centered">
+      <mat-form-field>
+        <mat-label>ISBN</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </td>
+    <td></td>
+    <td class="centered"><button mat-flat-button class="baseOutline deleteOutline">Deletes a book</button></td>
+  </tr>
+  <tr>
+    <td class="baseButton getButton">GET</td>
+    <td>/book/{{'{'}}isbn{{'}'}}/check</td>
+    <td class="centered">
+      <mat-form-field>
+        <mat-label>ISBN</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </td>
+    <td></td>
+    <td class="centered"><button mat-flat-button class="baseOutline getOutline">Return whetever ISBN exists or not</button></td>
+  </tr>
+  <tr>
+    <td class="baseButton postButton">POST</td>
+    <td>/book/{{'{'}}isbn{{'}'}}/rate</td>
+    <td class="centered">
+      <mat-form-field>
+        <mat-label>ISBN</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </td>
+    <td class="centered">
+      <mat-form-field>
+        <mat-label>rating</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </td>
+    <td class="centered"><button mat-flat-button class="baseOutline postOutline">Updates rating of a book to a given value</button></td>
+  </tr>
+</table>
