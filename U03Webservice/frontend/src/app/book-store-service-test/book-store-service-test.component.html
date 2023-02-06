@@ -1,105 +1,217 @@
+<div class="wrapper">
+  <h2 class="title"><a href="https://api4.angular-buch.com/swagger-ui/#/book" target="_blank">BookMonkey 4 API</a></h2>
+  <pre class="base-url">[ Base URL: / ]</pre>
+</div>
+
 <table>
   <tr>
-    <td class="baseButton getButton">GET</td>
+    <td><div class="baseButton getButton">GET</div></td>
     <td>/books</td>
     <td></td>
     <td></td>
-    <td class="centered"><button mat-flat-button class="baseOutline getOutline">Get all books</button></td>
+    <td class="centered">
+      <button
+        mat-flat-button
+        class="baseOutline getOutline"
+        (click)="getAllBooks()"
+      >
+        Get all books
+      </button>
+    </td>
   </tr>
   <tr>
-    <td class="baseButton deleteButton">DELETE</td>
+    <td><div class="baseButton deleteButton">DELETE</div></td>
     <td>/books</td>
     <td></td>
     <td></td>
-    <td class="centered"><button mat-flat-button class="baseOutline deleteOutline">Resets store to initail state</button></td>
+    <td class="centered">
+      <button
+        mat-flat-button
+        class="baseOutline deleteOutline"
+        (click)="resetStore()"
+      >
+        Resets store to initail state
+      </button>
+    </td>
   </tr>
   <tr>
-    <td class="baseButton getButton">GET</td>
-    <td>/books/search/{{'{'}}searchTerm{{'}'}}</td>
+    <td><div class="baseButton getButton">GET</div></td>
+    <td>/books/search/{{ "{" }}searchTerm{{ "}" }}</td>
     <td class="centered">
       <mat-form-field>
         <mat-label>searchTerm</mat-label>
-        <input matInput>
+        <input #searchTerm matInput />
       </mat-form-field>
     </td>
     <td></td>
-    <td class="centered"><button mat-flat-button class="baseOutline getOutline">Get all books matching search term</button></td>
+    <td class="centered">
+      <button
+        mat-flat-button
+        class="baseOutline getOutline"
+        (click)="getAllBooksSearchTerm(searchTerm.value)"
+      >
+        Get all books matching search term
+      </button>
+    </td>
   </tr>
   <tr>
-    <td class="baseButton postButton">POST</td>
+    <td><div class="baseButton postButton">POST</div></td>
     <td>/book</td>
     <td></td>
     <td></td>
     <td class="centered">
-      <button mat-flat-button class="baseOutline postOutline">Creates a new (random) book</button>
-      <button mat-flat-button disabled class="baseOutline postOutline">Creates a new (random) book with existing ISBN</button>
+      <button
+        mat-flat-button
+        class="baseOutline postOutline"
+        (click)="createRandomBook()"
+      >
+        Creates a new (random) book
+      </button>
+      <button
+        mat-flat-button
+        [disabled]="tempIsbn == null"
+        class="baseOutline postOutline"
+        (click)="createRandomBook()"
+      >
+        Creates a new (random) book with existing ISBN
+      </button>
     </td>
   </tr>
   <tr>
-    <td class="baseButton getButton">GET</td>
-    <td>/book/{{'{'}}isbn{{'}'}}</td>
+    <td><div class="baseButton getButton">GET</div></td>
+    <td>/book/{{ "{" }}isbn{{ "}" }}</td>
     <td class="centered">
       <mat-form-field>
         <mat-label>ISBN</mat-label>
-        <input matInput>
+        <input #searchisbn matInput />
       </mat-form-field>
     </td>
     <td></td>
-    <td class="centered"><button mat-flat-button class="baseOutline getOutline">Returns a single book by ISBN</button></td>
+    <td class="centered">
+      <button
+        mat-flat-button
+        class="baseOutline getOutline"
+        (click)="getBook(searchisbn.value)"
+      >
+        Returns a single book by ISBN
+      </button>
+    </td>
   </tr>
   <tr>
-    <td class="baseButton putButton">PUT</td>
-    <td>/book/{{'{'}}isbn{{'}'}}</td>
+    <td><div class="baseButton putButton">PUT</div></td>
+    <td>/book/{{ "{" }}isbn{{ "}" }}</td>
     <td class="centered">
       <mat-form-field>
         <mat-label>ISBN</mat-label>
-        <input matInput>
+        <input #updateisbn matInput />
       </mat-form-field>
     </td>
     <td></td>
     <td class="centered">
-      <button mat-flat-button class="baseOutline putOutline">Updates an existing book</button>
+      <button
+        mat-flat-button
+        class="baseOutline putOutline"
+        (click)="updateRandomBook(updateisbn.value)"
+      >
+        Updates an existing book
+      </button>
     </td>
   </tr>
   <tr>
-    <td class="baseButton deleteButton">DELETE</td>
-    <td>/book/{{'{'}}isbn{{'}'}}</td>
+    <td><div class="baseButton deleteButton">DELETE</div></td>
+    <td>/book/{{ "{" }}isbn{{ "}" }}</td>
     <td class="centered">
       <mat-form-field>
         <mat-label>ISBN</mat-label>
-        <input matInput>
+        <input #deleteisbn matInput />
       </mat-form-field>
     </td>
     <td></td>
-    <td class="centered"><button mat-flat-button class="baseOutline deleteOutline">Deletes a book</button></td>
+    <td class="centered">
+      <button
+        mat-flat-button
+        class="baseOutline deleteOutline"
+        (click)="deleteBook(deleteisbn.value)"
+      >
+        Deletes a book
+      </button>
+    </td>
   </tr>
   <tr>
-    <td class="baseButton getButton">GET</td>
-    <td>/book/{{'{'}}isbn{{'}'}}/check</td>
+    <td><div class="baseButton getButton">GET</div></td>
+    <td>/book/{{ "{" }}isbn{{ "}" }}/check</td>
     <td class="centered">
       <mat-form-field>
         <mat-label>ISBN</mat-label>
-        <input matInput>
+        <input #checkisbn matInput />
       </mat-form-field>
     </td>
     <td></td>
-    <td class="centered"><button mat-flat-button class="baseOutline getOutline">Return whetever ISBN exists or not</button></td>
+    <td class="centered">
+      <button
+        mat-flat-button
+        class="baseOutline getOutline"
+        (click)="checkBook(checkisbn.value)"
+      >
+        Return whetever ISBN exists or not
+      </button>
+    </td>
   </tr>
   <tr>
-    <td class="baseButton postButton">POST</td>
-    <td>/book/{{'{'}}isbn{{'}'}}/rate</td>
+    <td><div class="baseButton postButton">POST</div></td>
+    <td>/book/{{ "{" }}isbn{{ "}" }}/rate</td>
     <td class="centered">
       <mat-form-field>
         <mat-label>ISBN</mat-label>
-        <input matInput>
+        <input #updatedisbn matInput />
       </mat-form-field>
     </td>
     <td class="centered">
       <mat-form-field>
         <mat-label>rating</mat-label>
-        <input matInput>
+        <input #updaterating matInput />
       </mat-form-field>
     </td>
-    <td class="centered"><button mat-flat-button class="baseOutline postOutline">Updates rating of a book to a given value</button></td>
+    <td class="centered">
+      <button
+        mat-flat-button
+        class="baseOutline postOutline"
+        (click)="rateBook(updatedisbn.value, +updaterating.value)"
+      >
+        Updates rating of a book to a given value
+      </button>
+    </td>
   </tr>
 </table>
+
+<div class="output">
+  <h2>Ausgaben</h2>
+
+  <div *ngIf="book">
+    <b>Titel:</b> {{ book.title }} <b>ISBN:</b> {{ book.isbn }} <b>Autoren:</b>
+    {{ book.authors }} <b>Bewertung:</b> {{ book.rating }}
+  </div>
+
+  <div *ngIf="books">
+    <div *ngFor="let book of books">
+      <b>Titel:</b> {{ book.title }} <b>ISBN:</b> {{ book.isbn }}
+      <b>Autoren:</b> {{ book.authors }} <b>Bewertung:</b> {{ book.rating }}
+      <br />
+    </div>
+  </div>
+
+  <div *ngIf="error">
+    <h2>Error</h2>
+    <b>Status:</b> {{ error.status }}<br />
+    <b>StatusText:</b> {{ error.statusText }}<br />
+    <b>ok:</b> {{ error.ok }}<br />
+    <b>message:</b> {{ error.message }}
+  </div>
+  <div *ngIf="response">
+    <h2>Response</h2>
+    <b>Status:</b> {{ response.status }}<br />
+    <b>StatusText:</b> {{ response.statusText }}<br />
+    <b>ok:</b> {{ response.ok }}<br />
+    <b>body:</b> {{ response.body }}
+  </div>
+</div>
