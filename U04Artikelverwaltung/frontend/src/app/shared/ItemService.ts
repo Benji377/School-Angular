@@ -8,33 +8,33 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
 
-  getAllItems(): Promise<Item[]> {
+  async getAllItems(): Promise<Item[]> {
     return this.http.get<Item[]>(`${this.URL}/items`).toPromise();
   }
 
-  getItem(id: string): Promise<Item> {
+  async getItem(id: string): Promise<Item> {
     id = id.toUpperCase();
-    return this.http.get<Item>(`${this.URL}/item/${id}`).toPromise();
+    return this.http.get<Item>(`${this.URL}/items/${id}`).toPromise();
   }
 
-  checkIdExists(id: string): Promise<HttpResponse<Item>> {
+  async checkIdExists(id: string): Promise<HttpResponse<Item>> {
     id = id.toUpperCase();
     return this.http.get<HttpResponse<Item>>(`${this.URL}/items/${id}`).toPromise();
   }
 
-  createItem(item: Item): Promise<HttpResponse<Item>> {
+  async createItem(item: Item): Promise<HttpResponse<Item>> {
     item.id = item.id.toUpperCase();
     return this.http.post<HttpResponse<Item>>(`${this.URL}/items`, item).toPromise();
   }
 
-  updateItem(item: Item): Promise<HttpResponse<Item>> {
+  async updateItem(item: Item): Promise<HttpResponse<Item>> {
     item.id = item.id.toUpperCase();
-    return this.http.put<HttpResponse<Item>>(`${this.URL}/items${item.id}`, item).toPromise();
+    return this.http.put<HttpResponse<Item>>(`${this.URL}/items/${item.id}`, item).toPromise();
   }
 
-  deleteItem(id: string): Promise<HttpResponse<Item>> {
+  async deleteItem(id: string): Promise<HttpResponse<Item>> {
     id = id.toUpperCase();
-    return this.http.delete<HttpResponse<Item>>(`${this.URL}/items${id}`).toPromise();
+    return this.http.delete<HttpResponse<Item>>(`${this.URL}/items/${id}`).toPromise();
   }
 
   async deleteAllItems(): Promise<number> {

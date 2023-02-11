@@ -7,7 +7,7 @@
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let element"><a href="www.google.com">{{element.id}}</a></td>
+    <td mat-cell *matCellDef="let element"><a routerLink="/article/{{ element.id }}">{{element.id}}</a></td>
   </ng-container>
 
   <ng-container matColumnDef="beschreibung">

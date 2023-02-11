@@ -1,0 +1,12 @@
+<div *ngIf="error">
+  <h2>Error</h2>
+  <b>Status:</b> {{ error.status }}<br>
+  <b>StatusText:</b> {{ error.statusText }}<br>
+  <b>ok:</b> {{ error.ok }}<br>
+  <b>message:</b> {{ error.message }}
+ </div>
+
+ <button mat-raised-button color="accent" (click)="back()">
+  <mat-icon>arrow_back</mat-icon>
+  Back home
+</button>

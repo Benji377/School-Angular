@@ -1,6 +1,18 @@
-<mat-tab-group color="accent" backgroundColor="primary">
-  <mat-tab label="Artikelliste"> <app-artikelliste></app-artikelliste> </mat-tab>
-  <mat-tab label="Neuer Artikel"> <app-artikel-form></app-artikel-form> </mat-tab>
-  <mat-tab label="Alle Artikel löschen"> Content 3 </mat-tab>
-  <mat-tab label="Alle Artikel neu anlegen"> Content 4 </mat-tab>
-</mat-tab-group>
+<nav mat-tab-nav-bar backgroundColor="primary" color="accent">
+  <a mat-tab-link routerLink="/home" routerLinkActive #homeTab="routerLinkActive" [active]="homeTab.isActive">
+    Artikelliste
+  </a>
+  <a mat-tab-link routerLink="/add-article" routerLinkActive #formularTab="routerLinkActive"
+    [active]="formularTab.isActive">
+    Neuer Artikel
+  </a>
+  <a mat-tab-link routerLink="/remove-all" routerLinkActive #formularTab="routerLinkActive"
+    [active]="formularTab.isActive">
+    Alle Artikel löschen
+  </a>
+  <a mat-tab-link routerLink="/add-all" routerLinkActive #formularTab="routerLinkActive"
+    [active]="formularTab.isActive">
+    Alle Artikel neu anlegen
+  </a>
+</nav>
+<router-outlet></router-outlet>
