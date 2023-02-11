@@ -1,0 +1,38 @@
+<form fxLayout="column" [formGroup]="artikelForm" (ngSubmit)="register()" autocomplete="off">
+  <mat-form-field fxFlex>
+    <input matInput formControlName="id" placeholder="Id" type="text" >
+    <mat-error>ID Fehler</mat-error>
+  </mat-form-field>
+
+  <mat-form-field fxFlex>
+    <input matInput formControlName="description" placeholder="Beschreibung" type="text" >
+    <mat-error>Beschreibung Fehler</mat-error>
+  </mat-form-field>
+
+  <div fxFlex fxLayout.lt-sm="column" formGroupName="price">
+    <mat-form-field fxFlex>
+      <input matInput formControlName="purchaseprice" placeholder="Einkaufspreis" type="number" >
+      <mat-error>Einkaufspreis Problem</mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <input matInput formControlName="retailprice" placeholder="Verkaufspreis" type="number" >
+      <mat-error>Verkaufspreis Problem</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field fxFlex>
+    <input matInput formControlName="launchdate" placeholder="Einführungsdatum" type="date" />
+    <mat-error>Datum Problem</mat-error>
+  </mat-form-field>
+
+  <div fxFlex fxLayout.lt-sm="column" formArrayName="images">
+    <mat-form-field fxFlex *ngFor="let control of images.controls; index as i">
+      <input matInput [formControlName]="i" placeholder="Bild" type="text">
+      <mat-error>Eine korrekte Bild</mat-error>
+    </mat-form-field>
+  </div>
+
+  <button fxFlex mat-raised-button type="submit" [disabled]="!artikelForm.valid">
+    OK
+  </button>
+</form>
