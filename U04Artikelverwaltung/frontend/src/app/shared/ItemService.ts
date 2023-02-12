@@ -13,27 +13,22 @@ export class ItemService {
   }
 
   async getItem(id: string): Promise<Item> {
-    id = id.toUpperCase();
     return this.http.get<Item>(`${this.URL}/items/${id}`).toPromise();
   }
 
   async checkIdExists(id: string): Promise<HttpResponse<Item>> {
-    id = id.toUpperCase();
     return this.http.get<HttpResponse<Item>>(`${this.URL}/items/${id}`).toPromise();
   }
 
   async createItem(item: Item): Promise<HttpResponse<Item>> {
-    item.id = item.id.toUpperCase();
     return this.http.post<HttpResponse<Item>>(`${this.URL}/items`, item).toPromise();
   }
 
   async updateItem(item: Item): Promise<HttpResponse<Item>> {
-    item.id = item.id.toUpperCase();
     return this.http.put<HttpResponse<Item>>(`${this.URL}/items/${item.id}`, item).toPromise();
   }
 
   async deleteItem(id: string): Promise<HttpResponse<Item>> {
-    id = id.toUpperCase();
     return this.http.delete<HttpResponse<Item>>(`${this.URL}/items/${id}`).toPromise();
   }
 

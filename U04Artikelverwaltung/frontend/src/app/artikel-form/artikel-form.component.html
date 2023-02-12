@@ -36,11 +36,11 @@
       <div fxFlex fxLayout.lt-sm="column" [formGroup]="imagesForm">
         <mat-form-field fxFlex>
           <input matInput formControlName="url" placeholder="URL" type="text" />
-          <mat-error>Einkaufspreis Problem</mat-error>
+          <mat-error>URL muss eingegeben werden und eindeutig sein</mat-error>
         </mat-form-field>
         <mat-form-field fxFlex>
-          <input matInput formControlName="title" placeholder="Titel" type="text" />
-          <mat-error>Verkaufspreis Problem</mat-error>
+          <input matInput formControlName="title" placeholder="Titel" type="text" [errorStateMatcher]="imagesErrorMatcher" />
+          <mat-error>URL muss eindeutig sein</mat-error>
         </mat-form-field>
       </div>
       <button mat-mini-fab color="primary" [disabled]="images.value.length === 1 ? 'true' : 'false'" type="button"
@@ -57,7 +57,7 @@
     <button fxFlex mat-raised-button color="primary" type="submit" [disabled]="!artikelForm.valid">
       {{editing ? 'Ändern' : 'Hinzufügen'}}
     </button>
-    <button fxFlex mat-raised-button color="accent" type="reset">
+    <button fxFlex mat-raised-button color="accent" type="reset" *ngIf="editing" (click)="removeItem()">
       Löschen
     </button>
   </div>

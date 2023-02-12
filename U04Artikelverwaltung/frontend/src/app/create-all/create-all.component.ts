@@ -15,9 +15,14 @@ export class CreateAllComponent implements OnInit {
   constructor(private is: ItemService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
+    await this.is.deleteAllItems()
+      .then()
+      .catch(error => this.error = error)
+
+
     await this.is.createAllItems(ItemFactory.items())
       .then(_ => this.router.navigate(['/articles']))
-      .catch(error => this.error = error);
+      .catch(error => this.error = error)
   }
 
   back() {
