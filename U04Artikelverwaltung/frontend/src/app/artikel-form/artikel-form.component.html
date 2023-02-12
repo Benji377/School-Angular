@@ -1,31 +1,37 @@
-<form fxLayout="column" [formGroup]="artikelForm" (ngSubmit)="register()" autocomplete="off">
+<form fxLayout="column" *ngIf="artikelForm" [formGroup]="artikelForm" (ngSubmit)="register()" autocomplete="off">
   <mat-form-field fxFlex>
     <input matInput formControlName="id" placeholder="Id" type="text" />
-    <mat-error>ID Fehler</mat-error>
+    <mat-hint>Muss mit 'IT' oder 'DE' beginnen</mat-hint>
+    <mat-error>Die eingegebene ID ist ungültig</mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex>
     <input matInput formControlName="description" placeholder="Beschreibung" type="text" />
-    <mat-error>Beschreibung Fehler</mat-error>
+    <mat-error>Beschreibung muss eingegeben werden</mat-error>
+  </mat-form-field>
+
+  <mat-form-field fxFlex>
+    <input matInput formControlName="amount" placeholder="Anzahl" type="number" />
+    <mat-error>Darf keine Dezimalzahl enthalten, muss größer oder gleich 0 sein</mat-error>
   </mat-form-field>
 
   <div fxFlex fxLayout.lt-sm="column" formGroupName="price">
     <mat-form-field fxFlex>
       <input matInput formControlName="purchaseprice" placeholder="Einkaufspreis" type="number" />
-      <mat-error>Einkaufspreis Problem</mat-error>
+      <mat-error>Muss größer oder gleich 0 sein</mat-error>
     </mat-form-field>
     <mat-form-field fxFlex>
-      <input matInput formControlName="retailprice" placeholder="Verkaufspreis" type="number" />
-      <mat-error>Verkaufspreis Problem</mat-error>
+      <input matInput formControlName="retailprice" placeholder="Verkaufspreis" type="number" [errorStateMatcher]="pricesErrorMatcher"/>
+      <mat-error>Muss größer oder gleich 0 sein und größer oder gleich dem Einkaufspreis</mat-error>
     </mat-form-field>
   </div>
 
   <mat-form-field fxFlex>
     <input matInput formControlName="launchdate" placeholder="Einführungsdatum" type="date" />
-    <mat-error>Datum Problem</mat-error>
+    <mat-error>Datum muss eingegeben werden</mat-error>
   </mat-form-field>
 
-  <div fxFlex [fxLayout]="images.value.length <= 3 ? 'row' : 'column'" fxLayout.lt-sm="column" formArrayName="images">
+  <div fxFlex [fxLayout]="images.value.length <= 1 ? 'row' : 'column'" fxLayout.lt-sm="column" formArrayName="images">
     <div fxFlex *ngFor="let control of images.controls; index as i">
       <div fxFlex fxLayout.lt-sm="column" [formGroup]="imagesForm">
         <mat-form-field fxFlex>
@@ -37,20 +43,22 @@
           <mat-error>Verkaufspreis Problem</mat-error>
         </mat-form-field>
       </div>
-        <button mat-mini-fab color="primary" [disabled]="images.value.length === 1 ? 'true' : 'false'" type="button"
-          (click)="removeImageControl(i)">
-          <mat-icon>remove</mat-icon>
-        </button>
-      </div>
-      <button mat-mini-fab color="primary" type="button" (click)="addImageControl()">
-        <mat-icon>add</mat-icon>
+      <button mat-mini-fab color="primary" [disabled]="images.value.length === 1 ? 'true' : 'false'" type="button"
+        (click)="removeImageControl(i)">
+        <mat-icon>remove</mat-icon>
       </button>
     </div>
+    <button mat-mini-fab color="primary" type="button" (click)="addImageControl()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
-  <button fxFlex mat-raised-button type="submit" [disabled]="!artikelForm.valid">
-    OK
-  </button>
-  <button fxFlex mat-raised-button type="submit" [disabled]="!artikelForm.valid">
-    OK
-  </button>
+  <div>
+    <button fxFlex mat-raised-button color="primary" type="submit" [disabled]="!artikelForm.valid">
+      {{editing ? 'Ändern' : 'Hinzufügen'}}
+    </button>
+    <button fxFlex mat-raised-button color="accent" type="reset">
+      Löschen
+    </button>
+  </div>
 </form>

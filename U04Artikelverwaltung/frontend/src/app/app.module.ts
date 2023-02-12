@@ -17,12 +17,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+import { DeleteAllComponent } from './delete-all/delete-all.component';
+import { CreateAllComponent } from './create-all/create-all.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { LOCALE_ID } from '@angular/core';
-import { DeleteAllComponent } from './delete-all/delete-all.component';
-import { CreateAllComponent } from './create-all/create-all.component';
 registerLocaleData(localeDe);
 
 @NgModule({
@@ -45,11 +48,13 @@ registerLocaleData(localeDe);
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     ItemService,
     { provide: LOCALE_ID, useValue: 'de' },
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
   bootstrap: [AppComponent]
 })
