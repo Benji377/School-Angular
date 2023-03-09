@@ -13,11 +13,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NotesComponent } from './notes/notes.component';
+import { ThemesComponent } from './themes/themes.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ThemeDialogComponent } from './theme-dialog/theme-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    NotesComponent,
+    ThemesComponent,
+    ThemeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +41,11 @@ import { environment } from '../environments/environment';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    FormsModule,
+    MatInputModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
