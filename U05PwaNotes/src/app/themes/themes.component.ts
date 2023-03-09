@@ -3,6 +3,12 @@ import { db } from './../shared/database';
 import { Component, OnInit } from '@angular/core';
 import { Theme } from '../shared/theme';
 import { MatDialog } from '@angular/material/dialog';
+import { v4 as uuidv4 } from 'uuid';
+
+export interface DialogData {
+  data: string,
+  editing: boolean
+}
 
 @Component({
   selector: 'no-themes',
@@ -18,7 +24,7 @@ export class ThemesComponent implements OnInit {
   ngOnInit(): void {
     db.getThemesByDescription().then(
       result => {
-        this.themes_arr = result;
+        this.themes_arr = result
         console.log("Thiss", result);
       }
     )
@@ -27,15 +33,18 @@ export class ThemesComponent implements OnInit {
     )
   }
 
-  openDialog(): void {
+  openDialog(theme_des: string | undefined = undefined) {
     const dialogRef = this.dialog.open(ThemeDialogComponent, {
-      width: '250px',
-      data: this.theme_desc
+      data: {data: theme_des, editing: theme_des ? true : false}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed, ', result);
       this.theme_desc = result;
+      if (result) {
+        console.log(result);
+        db.addTheme(new Theme(uuidv4(), result.data)).then()
+      }
+      this.ngOnInit()
     });
   }
 

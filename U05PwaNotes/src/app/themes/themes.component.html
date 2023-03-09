@@ -1,7 +1,9 @@
-<mat-list role="list" *ngFor="let theme of themes_arr">
-  <mat-list-item role="listitem">{{ theme.description }}</mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list>
+<mat-action-list role="list">
+  <div *ngFor="let theme of themes_arr">
+    <mat-list-item role="listitem" style="padding-bottom: 5px;" (click)="openDialog(theme.description)">{{ theme.description }}</mat-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-action-list>
 
 <button mat-fab class="fab-bottom-right" matTooltip="Primary" color="accent" aria-label="Add themes button" (click)="openDialog()">
   <mat-icon>add</mat-icon>
