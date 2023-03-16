@@ -26,5 +26,6 @@ export class ThemeDialogComponent {
       }
     )
     .catch(err => console.error(err))
+    this.dialogRef.close();
   }
 }

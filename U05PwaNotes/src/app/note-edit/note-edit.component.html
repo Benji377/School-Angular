@@ -1,0 +1,28 @@
+<mat-card class="body">
+    <form fxLayout="column" [formGroup]="editForm">
+        <mat-form-field fxFlex>
+            <input matInput placeholder="Title" style="font-size: 30px;" required formControlName="title">
+        </mat-form-field>
+        <div>
+            <mat-form-field fxFlex>
+                <mat-label>Theme</mat-label>
+                <mat-select formControlName="theme">
+                    <mat-option *ngFor="let theme of themes" [value]="theme.description">
+                        {{theme.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-fab color="accent" (click)="addTheme()"><mat-icon>add</mat-icon></button>
+        </div>
+        <p></p>
+        <mat-form-field fxFlex>
+            <textarea rows="10" matInput formControlName="text" placeholder="Text">
+            </textarea>
+        </mat-form-field>
+        <div>
+            <button mat-raised-button fxFlex [disabled]="!editForm.valid" (click)="submit()">{{ id ? "Ändern" : "Hinzufügen"}}</button>
+            <button mat-raised-button fxFlex (click)="back()">Zurück</button>
+            <button mat-raised-button fxFlex (click)="delete()" [disabled]="!id">Löschen</button>
+        </div>
+    </form>
+</mat-card>

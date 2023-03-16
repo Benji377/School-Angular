@@ -1,5 +1,45 @@
-<mat-tab-group color="accent">
-  <mat-tab label="Titel"> Content 1 </mat-tab>
-  <mat-tab label="Thema"> Content 2 </mat-tab>
-  <mat-tab label="Änderungsdatum"> Content 3 </mat-tab>
-</mat-tab-group>
+<nav mat-tab-nav-bar color="accent">
+  <a
+    mat-tab-link
+    fxFlex
+    fxHide.lt-sm
+    routerLink="/notes/title"
+    routerLinkActive
+    #titleTab="routerLinkActive"
+    [active]="titleTab.isActive"
+  >
+    Titel
+  </a>
+  <a
+    mat-tab-link
+    fxFlex
+    routerLink="/notes/theme"
+    routerLinkActive
+    #themeTab="routerLinkActive"
+    [active]="themeTab.isActive"
+  >
+    Thema
+  </a>
+  <a
+    mat-tab-link
+    fxFlex
+    routerLink="/notes/date"
+    routerLinkActive
+    #datumTab="routerLinkActive"
+    [active]="datumTab.isActive"
+  >
+    Änderungsdatum
+  </a>
+</nav>
+
+<mat-action-list role="list">
+  <div *ngFor="let note of notes_arr">
+    <mat-list-item routerLink="/addEdit/{{note.id}}"
+      role="listitem"
+      style="padding-bottom: 5px"
+      ><no-note-list-item [note]="note"></no-note-list-item
+    ></mat-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-action-list>
+<button mat-fab routerLink="/addEdit/" class="fab-bottom-right"><mat-icon>add</mat-icon></button>

@@ -5,6 +5,7 @@ import { Note } from './note';
 import { Theme } from './theme';
 import { User } from './user';
 
+
 export class DbService extends Dexie {
   private notes!: Dexie.Table<Note, string>;
   private themes!: Dexie.Table<Theme, string>;
@@ -36,6 +37,9 @@ export class DbService extends Dexie {
   async getThemesByDescription() {
     return this.themes.orderBy('description').toArray();
   }
+  async getNotesById(id: string) {
+    return this.notes.where("id").equals(id).first();
+  }
   async getThemeByDescription(description: string) {
     const theme = await this.themes
       .where('description')
@@ -55,6 +59,20 @@ export class DbService extends Dexie {
       .equals(description)
       .sortBy('title');
   }
+
+  async getNotesByTitle() {
+    return this.notes
+      .orderBy('title')
+      .toArray();
+  }
+
+  async getNotesByDate() {
+    return this.notes
+      .orderBy('modificationDate')
+      .reverse()
+      .toArray();
+  }
+
   async addTheme(theme: Theme) {
     return this.themes.add(theme);
   }
@@ -63,6 +81,11 @@ export class DbService extends Dexie {
     return notes.length ? Promise.reject('Theme in use') :
       this.themes.delete(theme.id);
   }
+
+  async deleteNote(note: Note) {
+    return this.notes.delete(note.id);
+  }
+
   async updateTheme(theme: Theme) {
     await this.themes.update(theme.id, theme);
     return this.notes
@@ -72,6 +95,10 @@ export class DbService extends Dexie {
         'theme.description': theme.description,
         modificationDate: moment().valueOf()
       });
+  }
+  async updateNote(note: Note) {
+    note.modificationDate = moment().valueOf();
+    return this.notes.update(note.id, note);
   }
   async addNote(note: Note) {
     note.creationDate = moment().valueOf();

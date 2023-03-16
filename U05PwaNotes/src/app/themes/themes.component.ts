@@ -44,7 +44,7 @@ export class ThemesComponent implements OnInit {
         console.log(result);
         db.addTheme(new Theme(uuidv4(), result.data)).then()
       }
-      this.ngOnInit()
+      this.ngOnInit();
     });
   }
 

@@ -11,16 +11,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NotesComponent } from './notes/notes.component';
 import { ThemesComponent } from './themes/themes.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 import { ThemeDialogComponent } from './theme-dialog/theme-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { NoteListItemComponent } from './note-list-item/note-list-item.component';
+import { NoteEditComponent } from './note-edit/note-edit.component';
 
 
 @NgModule({
@@ -29,7 +35,9 @@ import { MatInputModule } from '@angular/material/input';
     NavComponent,
     NotesComponent,
     ThemesComponent,
-    ThemeDialogComponent
+    ThemeDialogComponent,
+    NoteListItemComponent,
+    NoteEditComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +45,14 @@ import { MatInputModule } from '@angular/material/input';
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
+    MatCardModule,
     MatButtonModule,
     MatSidenavModule,
+    MatSelectModule,
     MatIconModule,
     MatListModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
     MatTabsModule,
     MatFormFieldModule,
     MatDialogModule,
