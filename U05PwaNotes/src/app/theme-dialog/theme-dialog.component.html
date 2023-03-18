@@ -1,12 +1,22 @@
 <h1 mat-dialog-title>Themeneingabe</h1>
 <div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Themenbeschreibung</mat-label>
-    <input matInput [(ngModel)]="data.data">
-  </mat-form-field>
+  <form [formGroup]="themeForm">
+    <mat-form-field appearance="fill" type="text">
+      <mat-label>Themenbeschreibung</mat-label>
+      <input matInput formControlName="theme" [(ngModel)]="data.data" />
+      <mat-icon matSuffix>
+        search
+      </mat-icon>
+      <mat-error *ngIf="themeForm.controls.theme.hasError('themeExists')">Diesen Thema gibt es schon</mat-error>
+    </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data">Ok</button>
-  <button mat-button (click)="onNoClick()">Zurück</button>
-  <button mat-button (click)="onDelete()"><mat-icon>delete</mat-icon></button>
+  <button mat-raised-button [disabled]="!themeForm.valid" [mat-dialog-close]="data">
+    {{ data.editing ? "Ändern" : "Hinzufügen" }}
+  </button>
+  <button mat-raised-button (click)="onNoClick()">Zurück</button>
+  <button mat-raised-button [disabled]="!data.editing" (click)="onDelete()">
+    <mat-icon>delete</mat-icon>
+  </button>
 </div>

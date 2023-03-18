@@ -1,4 +1,4 @@
 <h2 style="margin-bottom: 0;">{{ note.title }}</h2>
 <small>Von: {{ note.user?.username ?? "Nicht definiert"  }}</small><br>
-<small>Erstellt: {{ note.creationDate | date: 'dd:MM:yy HH:mm:ss' }} Geändert: {{ note.modificationDate == 0 ? "Nicht definiert" : note.modificationDate }}</small>
+<small>Erstellt: {{ note.creationDate | date: 'dd:MM:yy HH:mm:ss' }} Geändert: {{ note.modificationDate == 0 ? "Nicht definiert" : note.modificationDate | date: 'dd:MM:yy HH:mm:ss' }}</small>
 <p style="padding-top: 5px;">{{ note.text }}</p>

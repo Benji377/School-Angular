@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { Note } from './note';
 import { Theme } from './theme';
 import { User } from './user';
+import { Observable } from 'rxjs';
 
 
 export class DbService extends Dexie {
@@ -15,7 +16,7 @@ export class DbService extends Dexie {
     this.version(1).stores({
       notes: 'id, title, [theme.description+title], theme.id, [modificationDate+creationDate]',
       themes: 'id, &description'
- });
+    });
     this.on('populate', async () => {
       try {
         const t1 = new Theme(uuidv4(), 'Bananen');
@@ -30,7 +31,7 @@ export class DbService extends Dexie {
         await this.addNote(n1);
         await this.addNote(n2);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     });
   }
@@ -40,6 +41,15 @@ export class DbService extends Dexie {
   async getNotesById(id: string) {
     return this.notes.where("id").equals(id).first();
   }
+
+  async checkThemeExists(value: string) {
+    if (!value || !value.length) {
+      return null;
+    } else {
+      return this.getThemeByDescription(value).catch(err => {return null});
+    }
+  }  
+
   async getThemeByDescription(description: string) {
     const theme = await this.themes
       .where('description')
@@ -50,7 +60,6 @@ export class DbService extends Dexie {
   async getNotesByTheme() {
     return this.notes
       .orderBy('[theme.description+title]')
-      .reverse()
       .toArray();
   }
   async getNotes(description: string) {
@@ -68,7 +77,7 @@ export class DbService extends Dexie {
 
   async getNotesByDate() {
     return this.notes
-      .orderBy('modificationDate')
+      .orderBy('[modificationDate+creationDate]')
       .reverse()
       .toArray();
   }

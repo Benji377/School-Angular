@@ -16,7 +16,6 @@ export class NotesComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(param => {
-      console.log(param.sort);
       switch (param.sort) {
         case "title":
           db.getNotesByTitle().then(data => this.notes_arr = data);

@@ -25,11 +25,10 @@ export class ThemesComponent implements OnInit {
     db.getThemesByDescription().then(
       result => {
         this.themes_arr = result
-        console.log("Thiss", result);
       }
     )
     .catch(
-      error => console.error("OH NO: ", error)
+      error => console.error(error)
     )
   }
 
@@ -39,13 +38,17 @@ export class ThemesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.theme_desc = result;
       if (result) {
-        console.log(result);
-        db.addTheme(new Theme(uuidv4(), result.data)).then()
+        if (result.editing) {
+          db.getThemeByDescription(theme_des?? "").then(
+            theme => db.updateTheme(new Theme(theme.id, result.data))
+          )
+          .catch(err => console.error(err))
+        } else {
+          db.addTheme(new Theme(uuidv4(), result.data)).then()
+        }
       }
-      this.ngOnInit();
+      this.ngOnInit(); // Reload the page
     });
   }
-
 }

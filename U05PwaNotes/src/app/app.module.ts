@@ -27,7 +27,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { NoteListItemComponent } from './note-list-item/note-list-item.component';
 import { NoteEditComponent } from './note-edit/note-edit.component';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { NoteEditComponent } from './note-edit/note-edit.component';
     ThemesComponent,
     ThemeDialogComponent,
     NoteListItemComponent,
-    NoteEditComponent
+    NoteEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +59,7 @@ import { NoteEditComponent } from './note-edit/note-edit.component';
     MatDialogModule,
     FormsModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
@@ -65,7 +67,10 @@ import { NoteEditComponent } from './note-edit/note-edit.component';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [{
+    provide: ErrorStateMatcher,
+    useClass: ShowOnDirtyErrorStateMatcher
+   }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
